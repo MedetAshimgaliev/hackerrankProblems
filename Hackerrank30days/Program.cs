@@ -297,7 +297,134 @@ namespace Hackerrank30days
             return sameLocationPossible;
         }
 
+        public static int[] reverseArray(int[] a)
+        {
+            int start = 0;
+            int end = a.Length-1;
 
+            int temp = 0;
+
+            while(start < end)
+            {
+                temp = a[start];
+                a[start] = a[end];
+                a[end] = temp;
+                start++;
+                end--;
+            }
+
+            return a;
+        }
+
+        public static int hourglassSum(int[][] arr)
+        {
+            int maxSum = int.MinValue;
+            int rows = arr.Length - 2;
+            for (int j = 0; j < rows; j++)
+            {
+                int columns = arr[j].Length - 2;
+
+                for (int k = 0; k < columns; k++)
+                {
+                    int sum = arr[j][k] + arr[j][k + 1] + arr[j][k + 2]
+                                        + arr[j + 1][k + 1]
+                        + arr[j + 2][k] + arr[j + 2][k + 1] + arr[j + 2][k + 2];
+
+                    if (maxSum < sum)
+                    {
+                        maxSum = sum;
+                    }
+                }
+            }
+            return maxSum;
+        }
+
+        public static int sockMerchant(int n, int[] ar)
+        {
+            int[] pairsToSell = new int[n];
+            int countToSell = 0;
+            foreach (int sock in ar)
+            {
+                var ind = sock % n;
+                pairsToSell[ind] += 1;
+                if (pairsToSell[ind] == 2)
+                {
+                    countToSell++;
+                    pairsToSell[ind] = 0;
+                }
+            }
+
+            return countToSell;
+        }
+
+
+        public static int getTotalX(List<int> a, List<int> b)
+        {
+            return 0;
+        }
+        public static void shifLeft(int[] nums)
+        {
+            int first = nums[0];
+
+            int from = 1;
+            for (; from < nums.Length; from++)
+            {
+                nums[from - 1] = nums[from];
+            }
+
+            nums[from - 1] = first;
+        }
+
+        public static int[] rotateleft(int[] a, int d)
+        {
+            int size = a.Length;
+            int[] rotatedArr = new int[size];
+
+            int i = 0;
+            int rotate_index = d;
+
+            while (rotate_index < size)
+            {
+                rotatedArr[i] = a[rotate_index];
+                i++;
+                rotate_index++;
+            }
+
+            rotate_index = 0;
+
+            while (rotate_index < d)
+            {
+                rotatedArr[i] = a[rotate_index];
+                i++;
+                rotate_index++;
+            }
+
+            return rotatedArr;
+        }
+
+        public static int countingValleys(int n, string s)
+        {
+            int v = 0;
+            int lvl = 0;
+
+            foreach(char c in s.ToCharArray())
+            {
+                if (c == 'U')
+                {
+                    lvl++;
+                }
+                if (c == 'D')
+                {
+                    lvl--;
+                }
+
+                if(lvl == 0 && c == 'U')
+                {
+                    v++;
+                }
+            }
+            return v;
+        }
 
         static void Main(string[] args)
         {
@@ -330,7 +457,19 @@ namespace Hackerrank30days
             //int[] oranges = { 3,-2,-4 };
             //countApplesAndOranges(7,10,4,12,apples,oranges);
 
-            Console.WriteLine(kangaroo(2, 1, 1, 2));
+            int[] a = { 1,2,3,4,5 };
+            int d = 4;
+
+            Console.WriteLine(countingValleys(8, "UDDDUDUU"));
+
+            //return rotatedArr;
+
+            //Console.WriteLine(string.Join(" ", rotatedArr));
+
+            //foreach (int i in nums)
+            //{
+            //    Console.WriteLine(i);
+            //}
         }
     }
 }
