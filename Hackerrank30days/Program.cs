@@ -426,6 +426,34 @@ namespace Hackerrank30days
             return v;
         }
 
+        public static int[] breakingRecords(int[] scores)
+        {
+            //int[] res = new int[] { };
+
+            int countmin = 0;
+            int countmax = 0;
+            int min = scores[0];
+            int max = scores[0];
+            for (int i = 0; i < scores.Length; i++)
+            {
+                
+
+                if (scores[i] < min)
+                {
+                    min = scores[i];
+                    countmin++;
+                }
+
+                if (scores[i] > max)
+                {
+                    max = scores[i];
+                    countmax++;
+                }
+            }
+
+            return new int[] {countmax, countmin};
+        }
+
         static void Main(string[] args)
         {
 
@@ -457,14 +485,14 @@ namespace Hackerrank30days
             //int[] oranges = { 3,-2,-4 };
             //countApplesAndOranges(7,10,4,12,apples,oranges);
 
-            int[] a = { 1,2,3,4,5 };
+            int[] a = { 3, 4, 21, 36, 10, 28, 35, 5, 24, 42 };
             int d = 4;
 
-            Console.WriteLine(countingValleys(8, "UDDDUDUU"));
+            //Console.WriteLine(countingValleys(8, "UDDDUDUU"));
 
             //return rotatedArr;
 
-            //Console.WriteLine(string.Join(" ", rotatedArr));
+            Console.WriteLine(string.Join(" ", breakingRecords(a)));
 
             //foreach (int i in nums)
             //{
