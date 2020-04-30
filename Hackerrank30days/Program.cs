@@ -454,6 +454,96 @@ namespace Hackerrank30days
             return new int[] {countmax, countmin};
         }
 
+        public static string catAndMouse(int x, int y, int z)
+        {
+            int distanceA = Math.Abs(z - x);
+
+            int distanceB = Math.Abs(z - y);
+
+            if (distanceA < distanceB)
+            {
+                return "Cat A";
+            }
+            if (distanceB < distanceA)
+            {
+                return "Cat B";
+            }
+            else
+            {
+                return "Mouse C"; 
+            }
+
+        }
+
+        public static int designerPdfViewer(int[] h, string word)
+        {
+            //char c = 'z';
+            //int index = (int)c % 32;x
+            var alphabetHeight = new Dictionary<char, int>();
+
+            var alphabet = 'a';
+            foreach (var height in h)
+            {
+                alphabetHeight.Add(alphabet++, height);
+            }
+
+            var maxAlphabetHeight = 0;
+            foreach (var letter in word)
+            {
+                if (alphabetHeight[letter] > maxAlphabetHeight)
+                {
+                    maxAlphabetHeight = alphabetHeight[letter];
+                }
+            }
+
+            var areaOfSelectedText = maxAlphabetHeight * word.Length;
+
+            return areaOfSelectedText;
+        }
+
+        public static int birthday(List<int> s, int d, int m)
+        {
+
+            var totalWays = 0;
+
+            if (s.Count >= m)
+            {
+                var barPartSum = 0;
+                for (int i = 0; i < m; i++)
+                    barPartSum += s[i];
+
+                if (barPartSum == d)
+                    totalWays++;
+
+                for (int i = 0; i < s.Count - m; i++)
+                {
+                    barPartSum = barPartSum - s[i] + s[i + m];
+
+                    if (barPartSum == d)
+                        totalWays++;
+                }
+            }
+            return totalWays;
+        }
+
+        public static int factorial(int n)
+        {
+            if (n == 0)
+            {
+                return 0;
+            }
+            if (n == 1)
+            {
+                return 1;
+            }
+            else
+            {
+                return n * factorial(n - 1);
+            }
+        }
+
+        
+
         static void Main(string[] args)
         {
 
@@ -485,19 +575,66 @@ namespace Hackerrank30days
             //int[] oranges = { 3,-2,-4 };
             //countApplesAndOranges(7,10,4,12,apples,oranges);
 
-            int[] a = { 3, 4, 21, 36, 10, 28, 35, 5, 24, 42 };
-            int d = 4;
+            int[] a = { 1, 3, 1, 3, 1, 4, 1, 3, 2, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 7 };
+            //int d = 4;
+
+            //Console.WriteLine(designerPdfViewer(a,"zaba"));
 
             //Console.WriteLine(countingValleys(8, "UDDDUDUU"));
 
             //return rotatedArr;
 
-            Console.WriteLine(string.Join(" ", breakingRecords(a)));
+            //Console.WriteLine(string.Join(" ", breakingRecords(a)));
 
             //foreach (int i in nums)
             //{
             //    Console.WriteLine(i);
             //}
+
+            //int tries = Convert.ToInt32(Console.ReadLine());
+
+            //string[] array = new string[tries];
+
+
+            //for(int i = 0; i < array.Length; i++)
+            //{
+            //    array[i] = Console.ReadLine();
+            //}
+
+
+
+            //for (int i = 0; i < array.Length; i++)
+            //{
+            //    string res1 = "";
+            //    string res2 = "";
+            //    for (int j = 0; j < array[i].Length; j++)
+            //    {
+            //        if (j % 2 == 0)
+            //        {
+            //            res1 += array[i][j];
+            //        }
+
+            //        if (j % 2 == 1)
+            //        {
+            //            res2 += array[i][j];
+            //        }
+            //    }
+
+            //    Console.WriteLine(res1 + " " +res2 );
+            //}
+
+            int[] arr = {1,4,3,2};
+
+            int[] temp = { };
+
+            for(int i = arr.Length-1; i >= 0; --i)
+            {
+                Console.Write(arr[i] + " ");
+            }
+                
+
+
+
         }
     }
 }
