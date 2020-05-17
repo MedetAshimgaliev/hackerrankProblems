@@ -542,94 +542,89 @@ namespace Hackerrank30days
             }
         }
 
-        
+        public static int jumpingOnClouds(int[] c)
+        {
+            int stepCount = 0;
+            int i = 0;
+            while (i < c.Length - 1)
+            {
+                if (i + 2 == c.Length || c[i + 2] == 1)
+                {
+                    i++;
+                    stepCount++;
+                }
+                else
+                {
+                    i += 2;
+                    stepCount++;
+                }
+            }
+
+            return stepCount;
+            
+        }
+
+        public static long repeatedString(string s, long n)
+        {
+            long q = n / s.Length;
+            long rem = n % s.Length;
+
+            long acount = 0;
+            for(int i = 0; i < s.Length; i++)
+            {
+                if (s[i] == 'a')
+                {
+                    acount++;
+                }
+            }
+
+            long result = acount * q;
+
+            for(int i = 0; i < rem; i++)
+            {
+                if (s[i] == 'a')
+                {
+                    result++;
+                }
+            }
+
+            //return s[Convert.ToInt32(rem)-1];
+            return result;
+        }
+
+        public static int[] rotLeft(int[] a, int d)
+        {
+            rvereseArray(a, 0, a.Length-1);
+            rvereseArray(a, a.Length - d, a.Length - 1);
+            rvereseArray(a, 0, a.Length - d - 1);
+
+            return a;
+        }
+
+        public static void rvereseArray(int[] arr, int start, int end)
+        {
+            int temp;
+
+            while (start < end)
+            {
+                temp = arr[start];
+                arr[start] = arr[end];
+                arr[end] = temp;
+                start++;
+                end--;
+            }
+        }
 
         static void Main(string[] args)
         {
 
-            //List<List<int>> arr = new List<List<int>>();
-            //int[] alice = { 17, 28, 30 };
-            //var a = alice.ToList();
-            //arr.Add(a);
+            
 
-            //int[] Bob = { 99, 16, 8 };
-            //var b = Bob.ToList();
-            //arr.Add(b);
+            int[] arr = {1,2,3,4,5};
 
-            //int[] Her = { 99, 16, 8 };
-            //var c = Her.ToList();
-            //arr.Add(c);
-
-            //int[] alice = { 4,73,67,38,33 };
-            //List<int> grades = alice.ToList();
-
-            //int[] nums = new int[] { 2,1,5,4,5};
-            //string time = "07:05:45PM";
-
-            //foreach (int grade in gradingStudents(grades))
-            //{
-            //    Console.WriteLine(grade);
-            //}
-
-            //int[] apples = { 2,3,-4 };
-            //int[] oranges = { 3,-2,-4 };
-            //countApplesAndOranges(7,10,4,12,apples,oranges);
-
-            int[] a = { 1, 3, 1, 3, 1, 4, 1, 3, 2, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 7 };
-            //int d = 4;
-
-            //Console.WriteLine(designerPdfViewer(a,"zaba"));
-
-            //Console.WriteLine(countingValleys(8, "UDDDUDUU"));
-
-            //return rotatedArr;
-
-            //Console.WriteLine(string.Join(" ", breakingRecords(a)));
-
-            //foreach (int i in nums)
-            //{
-            //    Console.WriteLine(i);
-            //}
-
-            //int tries = Convert.ToInt32(Console.ReadLine());
-
-            //string[] array = new string[tries];
-
-
-            //for(int i = 0; i < array.Length; i++)
-            //{
-            //    array[i] = Console.ReadLine();
-            //}
-
-
-
-            //for (int i = 0; i < array.Length; i++)
-            //{
-            //    string res1 = "";
-            //    string res2 = "";
-            //    for (int j = 0; j < array[i].Length; j++)
-            //    {
-            //        if (j % 2 == 0)
-            //        {
-            //            res1 += array[i][j];
-            //        }
-
-            //        if (j % 2 == 1)
-            //        {
-            //            res2 += array[i][j];
-            //        }
-            //    }
-
-            //    Console.WriteLine(res1 + " " +res2 );
-            //}
-
-            int[] arr = {1,4,3,2};
-
-            int[] temp = { };
-
-            for(int i = arr.Length-1; i >= 0; --i)
+            foreach(int c in rotLeft(arr, 4))
             {
-                Console.Write(arr[i] + " ");
+                Console.WriteLine(c);
             }
                 
 
