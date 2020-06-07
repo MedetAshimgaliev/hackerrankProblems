@@ -615,21 +615,51 @@ namespace Hackerrank30days
             }
         }
 
+        public static int MissingNumber(int[] nums)
+        {
+            int len = nums.Length;
+            int sum = len * (len + 1) / 2;
+            foreach (int n in nums)
+            {
+                sum = sum - n;
+            }
+            return sum;
+        }
+
+        public static int migratoryBirds(List<int> arr)
+        {
+            arr.Sort();
+            Dictionary<int, int> ht = new Dictionary<int, int>();
+            foreach(int c in arr)
+            {
+                if (ht.ContainsKey(c))
+                {
+                    ht[c] = ht[c] + 1;
+                }
+                else
+                {
+                    ht.Add(c, 1);
+                }
+            }
+            int maxVal = ht.Values.Max();
+
+            return ht.FirstOrDefault(x=>x.Value == maxVal).Key;
+        }
+
         static void Main(string[] args)
         {
-
+            List<int> arr2 = new List<int> { 1,1,2,2,3};
             
 
-            int[] arr = {1,2,3,4,5};
+            int[] arr = {3,0,1};
 
-            foreach(int c in rotLeft(arr, 4))
-            {
-                Console.WriteLine(c);
-            }
+            //foreach(int c in rotLeft(arr, 4))
+            //{
+            //    Console.WriteLine(c);
+            //}
+
+            Console.WriteLine(migratoryBirds(arr2));
                 
-
-
-
         }
     }
 }
